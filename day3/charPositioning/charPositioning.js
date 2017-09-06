@@ -14,5 +14,5 @@ function indexOf(string){
 }
 
 var myArgs = (process.argv.slice(2));
-var myInput = myArgs.join("").replace(/\s/g,"");
+var myInput = myArgs.join(" ").replace(/\s/g,"");
 console.log(indexOf(myInput));
