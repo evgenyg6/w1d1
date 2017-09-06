@@ -3,11 +3,11 @@ function countLetters(str){
 
   for(i = 0; i < str.length; i++){
     var character = str[i];
-    if(character in frequency){
-      frequency[character]++;
+    if(character in frequency){ //if character in frequency
+      frequency[character]++; //add one to character index
     }
     else{
-      frequency[character] = 1;
+      frequency[character] = 1; //else character is 1
     }
   }
 
