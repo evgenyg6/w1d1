@@ -2,7 +2,7 @@ var wrapLog = function (callback, name) {
 
   return function(){
 
-    console.log(name + "(" + Array.from(arguments).join(", ") + ")" + "==>" + callback.apply(this, arguments);
+    console.log(name + "(" + Array.from(arguments).join(", ") + ")" + " ==> " + callback.apply(this, arguments));
 
   }
 };
@@ -20,7 +20,7 @@ var volume = function (x, y, z) {
   return x * y * z;
 };
 
-//var logVolume = wrapLog(volume, "volume");
+var logVolume = wrapLog(volume, "volume");
 
-//logVolume(5, 3, 2); // volume(5, 3, 2) => 30
-//logVolume(3, 2, 4); // volume(3, 2, 4) => 24
+logVolume(5, 3, 2); // volume(5, 3, 2) => 30
+logVolume(3, 2, 4); // volume(3, 2, 4) => 24
