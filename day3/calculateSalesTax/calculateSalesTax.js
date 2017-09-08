@@ -22,40 +22,46 @@ var companySalesData = [
   }
 ];
 
-function sum(input){  //generic sum function for any number
+function sum(arr){  //generic sum function for any number
 
  var total =  0;
-  for(var i=0;i<input.length;i++) {
-    if(isNaN(input[i])){
+  for(var i=0;i<arr.length;i++) {
+    if(isNaN(arr[i])){
      continue;
     }
-    total += Number(input[i]);
+    total += Number(arr[i]);
   }
   return total;
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 function calculateSalesTax(salesData, taxRates) {
 
   var object = {};
+
   for(i in salesData){
 
-    var myCompany = companySalesData[i].name;
-    var mySum = sum(companySalesData[i].sales);
-    var myTax = sum(companySalesData[i].sales) * salesTaxRates[companySalesData[i].province];
-    var myProvince = companySalesData[i].province;
+    var myCompany = salesData[i].name;      //working with salesData, as a local function variable, SHOULD NOT ACCESS GLOBAL VARIABLE companySalesData
+
+    var mySum = sum(salesData[i].sales);
+
+    var myTax = mySum * taxRates[salesData[i].province]; //working with taxRates rather than the GLOBAL salesTaxRates
+
     if(object[myCompany]){ //checks if object exists, it doesn't
       object[myCompany].totalSales += mySum; //adds mySum to the created totalSales
       object[myCompany].totalTaxes += myTax; //adds myTax to the created totalSales
     }
-    else{ //creates new object IF it didn't exist
-    object[myCompany] = {totalSales: mySum, totalTaxes: myTax};
+    else { //creates new object IF it didn't exist
+      object[myCompany] = {totalSales: mySum, totalTaxes: myTax};
     }
 
   }
   return object;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var results = calculateSalesTax(companySalesData, salesTaxRates);
 console.log(results);
