@@ -1,0 +1,22 @@
+{
+  "name": "name",
+  "version": "1.0.0",
+  "description": "this is chalk",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evgenyg6/w1d1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evgenyg6/w1d1/issues"
+  },
+  "homepage": "https://github.com/evgenyg6/w1d1#readme",
+  "dependencies": {
+    "chalk": "^2.1.0"
+  }
+}
