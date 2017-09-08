@@ -1,6 +1,6 @@
 function map(arrArg, callback){  //arguments are words, function(word) from below
   var arr = [];
-  arrArg.forEach(function(element){  //for each element in aarArg
+  arrArg.forEach(function(element){  //for each element in arrArg
      arr.push(callback(element)); //first, callback function, then push into new array
 
   })

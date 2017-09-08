@@ -69,24 +69,25 @@ printTracks: function () {
  printPlaylist: function (playlistId) {
   console.log("TEST - printPlaylist");
 
-  for(i in this.playlists){
-    var currPl = this.playlists[i];
+    var currPl = library.playlists[playlistId];
+    if(currPl == undefined){
+      console.log("No such playlist.");
+      return;
+    }
 
-    if(playlistId != currPl.id)
-      continue;
 
     var len = currPl.tracks.length; //returns tracks array length
     console.log(currPl.id + ": " + currPl.name + " - " + len + " tracks");
 
-    for (tr in currPl.tracks)
-      var trr = currPl.tracks[tr];
-      var track_obj = this.tracks[trr];
+    currPl.tracks.forEach(function(track){
+      var track_obj = library.tracks[track];
       console.log(track_obj.id + ": " + track_obj.name + " by " + track_obj.artist + " (" + track_obj.album + " )" );
 
-  }
+    })
+
 
 },
-//printPlaylist("p01");
+
 
 // adds an existing track to an existing playlist
 
@@ -135,6 +136,11 @@ addPlaylist: function (name) {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search
 
 printSearchResults: function(query) {
+for(i in library.tracks){ //function search returns -1 if substring wasn't found. Otherwise, returns index of letter it starts with
+    if (library.tracks[i].artist.search(query) >= 0 || library.tracks[i].name.search(query) >= 0 || library.tracks[i].album.search(query) >= 0)
+      console.log(library.tracks[i].id);
+  }
 
 },
 }
+library.printSearchResults("Jo");
